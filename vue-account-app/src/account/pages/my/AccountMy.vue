@@ -50,8 +50,8 @@
                 @click="$router.push({ name: 'AccountWithdrawPage' })"
               >
                 <span class="delete_button_text">탈퇴하기</span>
-                <span class="delete_button_icon"
-                  ><svg
+                <span class="delete_button_icon">
+                  <svg
                     class="svg"
                     height="512"
                     viewBox="0 0 512 512"
@@ -129,8 +129,9 @@
                       x2="320"
                       y1="176"
                       y2="400"
-                    ></line></svg
-                ></span>
+                    ></line>
+                    </svg>
+                  </span>
               </button>
             </v-col>
              <!-- ✅ 홈으로 가기 버튼 추가 -->

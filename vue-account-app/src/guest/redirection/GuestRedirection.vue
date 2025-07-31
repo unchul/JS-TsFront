@@ -7,7 +7,7 @@ import { onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 import { useAccountStore } from "../../account/stores/accountStore";
-import { useGuestAuthenticationStore } from "../../guestAuthentication/stores/guestAuthenticationStore";
+import { useGuestAuthenticationStore } from "../../guest/stores/guestAuthenticationStore";
 
 const accountStore = useAccountStore();
 const guestAuthenticationStore = useGuestAuthenticationStore();

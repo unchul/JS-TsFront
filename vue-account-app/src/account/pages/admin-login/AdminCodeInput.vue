@@ -57,7 +57,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import githubIconSrc from "@/assets/images/fixed/icon-github.svg";
-import { useGithubAuthenticationStore } from "../../../githubAuthentication/stores/githubAuthenticationStore";
+import { useGithubAuthenticationStore } from "../../../github/stores/githubAuthenticationStore";
 
 // ✅ SEO 메타 정보 설정
 definePageMeta({

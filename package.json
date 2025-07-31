@@ -6,12 +6,12 @@
     "vue-account-app"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --parallel",
     "start": "lerna run start --parallel"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "external-remotes-plugin": "^1.0.0",
-    "lerna": "^8.2.2"
+    "lerna": "^8.2.1"
   }
 }

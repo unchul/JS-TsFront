@@ -105,9 +105,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useKakaoAuthenticationStore } from "../../../kakaoAuthentication/stores/kakaoAuthenticationStore";
-import { useGoogleAuthenticationStore } from "../../../googleAuthentication/stores/googleAuthenticationStore";
-import { useNaverAuthenticationStore } from "../../../naverAuthentication/stores/naverAuthenticationStore";
+import { useKakaoAuthenticationStore } from "../../../kakao/stores/kakaoAuthenticationStore";
+import { useGoogleAuthenticationStore } from "../../../google/stores/googleAuthenticationStore";
+import { useNaverAuthenticationStore } from "../../../naver/stores/naverAuthenticationStore";
 
 // ✅ SEO 메타 정보
 definePageMeta({

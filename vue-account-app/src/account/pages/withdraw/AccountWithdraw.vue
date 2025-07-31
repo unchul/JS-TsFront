@@ -62,10 +62,10 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { useAccountStore } from '@/account/stores/accountStore'
-import { useKakaoAuthenticationStore } from '@/kakaoAuthentication/stores/kakaoAuthenticationStore'
-import { useNaverAuthenticationStore } from '@/naverAuthentication/stores/naverAuthenticationStore'
-import { useGoogleAuthenticationStore } from '@/googleAuthentication/stores/googleAuthenticationStore'
-import { useAuthenticationStore } from '@/authentication/stores/authenticationStore'
+import { useKakaoAuthenticationStore } from '@/kakao/stores/kakaoAuthenticationStore'
+import { useNaverAuthenticationStore } from '@/naver/stores/naverAuthenticationStore'
+import { useGoogleAuthenticationStore } from '@/google/stores/googleAuthenticationStore'
+import { useAuthenticationStore } from '@/auth/stores/authenticationStore'
 
 // ✅ SEO 메타 정보
 definePageMeta({

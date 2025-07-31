@@ -13,8 +13,8 @@ const VueAccountAppWrapper = ({ eventBus }) => {
 
         if (!isMountedRef.current) {
             const loadRemoteComponent = async () => {
-                const { vueAccountApp } = await import("vueAccountApp/bootstrap");
-                vueAccountApp(vueModuleRef.current, eventBus);
+                const { vueAccountAppMount } = await import("vueAccountApp/bootstrap");
+                vueAccountAppMount(vueModuleRef.current, eventBus);
                 isMountedRef.current = true;
             }
 

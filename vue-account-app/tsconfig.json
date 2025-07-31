@@ -15,7 +15,9 @@
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true,
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "*": [
         "./@mf-types/*"
       ]

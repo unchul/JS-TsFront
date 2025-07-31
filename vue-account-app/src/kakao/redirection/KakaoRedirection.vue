@@ -7,7 +7,7 @@ import { onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 import { useAccountStore } from "../../account/stores/accountStore";
-import { useKakaoAuthenticationStore } from "../../kakaoAuthentication/stores/kakaoAuthenticationStore";
+import { useKakaoAuthenticationStore } from "../../kakao/stores/kakaoAuthenticationStore";
 
 const accountStore = useAccountStore();
 const kakaoAuthenticationStore = useKakaoAuthenticationStore();

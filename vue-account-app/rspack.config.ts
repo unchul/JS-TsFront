@@ -1,10 +1,12 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { rspack } from "@rspack/core";
+import { DefinePlugin, rspack } from "@rspack/core";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import { VueLoaderPlugin } from "vue-loader";
 
 import { mfConfig } from "./module-federation.config";
+
+console.log("🌐 MFE_CORS_ORIGIN:", process.env.MFE_CORS_ORIGIN);
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -17,6 +19,9 @@ export default defineConfig({
     main: "./src/index.tsx",
   },
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
     extensions: ["...", ".ts", ".tsx", ".jsx"],
   },
 
@@ -24,13 +29,45 @@ export default defineConfig({
     port: 3001,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
+
+    setupMiddlewares: (middlewares, devServer) => {
+      const envOrigins = process.env.MFE_CORS_ORIGIN ?? "";
+      const allowedOrigins = envOrigins
+        .split(",")
+        .map((o) => o.trim())
+        .filter(Boolean);
+
+      if (devServer?.app) {
+        devServer.app.use((req, res, next) => {
+          // const origin = req.headers.origin;
+          // if (origin && allowedOrigins.includes(origin)) {
+          //   res.setHeader("Access-Control-Allow-Origin", origin);
+          // }
+
+          res.setHeader("Access-Control-Allow-Origin", "*");
+          res.setHeader(
+            "Access-Control-Allow-Methods",
+            "GET,OPTIONS,POST,PUT,DELETE"
+          );
+          res.setHeader("Access-Control-Allow-Headers", "*");
+
+          if (req.method === "OPTIONS") {
+            res.sendStatus(200);
+          } else {
+            next();
+          }
+        });
+      }
+
+      return middlewares;
+    },
   },
 
   output: {
     // You need to set a unique value that is not equal to other applications
     uniqueName: "vue_account_app",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:3001/",
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {
@@ -39,6 +76,10 @@ export default defineConfig({
 
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+        type: "asset", // 또는 type: 'asset/resource'
+      },
       {
         test: /\.vue$/,
         loader: "vue-loader",
@@ -78,6 +119,13 @@ export default defineConfig({
     new VueLoaderPlugin(),
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
+    }),
+    new DefinePlugin({
+      "process.env.VUE_APP_BASE_URL": JSON.stringify(
+        process.env.VUE_APP_BASE_URL
+      ),
+      // "process.env.MFE_CORS_ORIGIN": JSON.stringify(process.env.MFE_CORS_ORIGIN),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     }),
     new ModuleFederationPlugin(mfConfig),
   ].filter(Boolean),

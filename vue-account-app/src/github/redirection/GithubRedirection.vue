@@ -8,7 +8,7 @@ import { onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 import { useAccountStore } from "../../account/stores/accountStore";
-import { useGithubAuthenticationStore } from "../../githubAuthentication/stores/githubAuthenticationStore";
+import { useGithubAuthenticationStore } from "../../github/stores/githubAuthenticationStore";
 
 const accountStore = useAccountStore();
 const githubAuthenticationStore = useGithubAuthenticationStore();

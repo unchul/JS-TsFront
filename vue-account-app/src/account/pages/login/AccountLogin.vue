@@ -36,7 +36,7 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useGuestAuthenticationStore } from "@/guestAuthentication/stores/guestAuthenticationStore";
+import { useGuestAuthenticationStore } from "../../../guest/stores/guestAuthenticationStore";
 
 // ✅ SEO 메타 정보 설정
 definePageMeta({
