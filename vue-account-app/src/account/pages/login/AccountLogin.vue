@@ -37,16 +37,20 @@
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useGuestAuthenticationStore } from "../../../guest/stores/guestAuthenticationStore";
+import { useHead } from '@vueuse/head'
 
-// ✅ SEO 메타 정보 설정
-definePageMeta({
-  title: '로그인 | 잡스틱(JobStick)',
-  description: '잡스틱(JobStick)에 로그인하고 다양한 개인 맞춤형 서비스를 이용해보세요.',
-  keywords: ['잡스틱(JobStick) 로그인', '계정 로그인', '회원 로그인', '게스트 로그인', 'JobStick', 'job-stick', '잡스틱', '개발자 플랫폼', '개발자 취업', '모의 면접', 'AI 면접'],
-  ogTitle: '로그인 - 잡스틱(JobStick)',
-  ogDescription: '잡스틱(JobStick)에 로그인하여 추천 컨텐츠 및 맞춤형 기능을 체험해보세요.',
-  ogImage: '', // 실제 존재하는 경로로 설정
-  robots: 'index, follow',
+
+// ✅ SEO 메타 정보 설정 2
+useHead({
+  title: "로그인 | 잡스틱(JobStick)",
+  meta: [
+    { name: "description", content: "잡스틱(JobStick)에 로그인하고 다양한 개인 맞춤형 서비스를 이용해보세요." },
+    { name: "keywords", content: "잡스틱(JobStick) 로그인, 계정 로그인, 회원 로그인, 게스트 로그인, JobStick, job-stick, 잡스틱, 개발자 플랫폼, 개발자 취업, 모의 면접, AI 면접" },
+    { name: "robots", content: "index, follow" },
+    { property: "og:title", content: "로그인 - 잡스틱(JobStick)" },
+    { property: "og:description", content: "잡스틱(JobStick)에 로그인하여 추천 컨텐츠 및 맞춤형 기능을 체험해보세요." },
+    { property: "og:image", content: "" }
+  ]
 })
 
 const router = useRouter();

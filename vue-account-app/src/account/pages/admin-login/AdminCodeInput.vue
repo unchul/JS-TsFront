@@ -58,17 +58,21 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import githubIconSrc from "@/assets/images/fixed/icon-github.svg";
 import { useGithubAuthenticationStore } from "../../../github/stores/githubAuthenticationStore";
+import { useHead } from '@vueuse/head'
 
-// ✅ SEO 메타 정보 설정
-definePageMeta({
+// ✅ SEO 메타 정보 설정 1
+useHead({
   title: "관리자 코드 입력 | 잡스틱(JobStick)",
-  description: "잡스틱(JobStick)에서 GitHub 로그인을 진행하기 위해 관리자 코드를 입력하세요.",
-  keywords: ['관리자', '관리자 코드', 'JobStick', '잡스틱', 'job-stick', '관리자 로그인', '개발자 플랫폼', '개발자 취업', 'AI 면접'],
-  ogTitle: "관리자 로그인 인증 - 잡스틱(JobStick)",
-  ogDescription: "잡스틱(JobStick) 관리자 인증을 통해 GitHub 로그인을 시작하세요.",
-  ogImage: "/images/og-admin-login.png",
-  robots: 'noindex, nofollow'
-});
+  meta: [
+    { name: "description", content: "잡스틱(JobStick)에서 GitHub 로그인을 진행하기 위해 관리자 코드를 입력하세요." },
+    { name: "keywords", content: "관리자, 관리자 코드, JobStick, 잡스틱, job-stick, 관리자 로그인, 개발자 플랫폼, 개발자 취업, AI 면접" },
+    { name: "robots", content: "noindex, nofollow" },
+    { property: "og:title", content: "관리자 로그인 인증 - 잡스틱(JobStick)" },
+    { property: "og:description", content: "잡스틱(JobStick) 관리자 인증을 통해 GitHub 로그인을 시작하세요." },
+    { property: "og:image", content: "/images/og-admin-login.png" }
+  ]
+})
+
 
 const router = useRouter();
 const githubAuthentication = useGithubAuthenticationStore();

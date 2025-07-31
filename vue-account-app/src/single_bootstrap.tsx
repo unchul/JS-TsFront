@@ -3,6 +3,7 @@ import type { App as VueApp } from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
+import { createHead } from '@vueuse/head'
 
 import 'vuetify/styles' // Vuetify의 기본 스타일
 import '@mdi/font/css/materialdesignicons.css' // 아이콘 폰트
@@ -34,7 +35,8 @@ export const vueAccountAppMount = (el: string | Element, eventBus: any) => {
         });
 
         const pinia = createPinia();
-        app.use(vuetify).use(router).use(pinia);
+        const head = createHead();
+        app.use(vuetify).use(router).use(pinia).use(head);
         app.provide('eventBus', eventBus);
 
         eventBus.on('vue-account-routing-event', (path: string) => {

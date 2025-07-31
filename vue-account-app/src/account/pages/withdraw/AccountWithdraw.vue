@@ -60,6 +60,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useHead } from '@vueuse/head'
 
 import { useAccountStore } from '@/account/stores/accountStore'
 import { useKakaoAuthenticationStore } from '@/kakao/stores/kakaoAuthenticationStore'
@@ -67,15 +68,17 @@ import { useNaverAuthenticationStore } from '@/naver/stores/naverAuthenticationS
 import { useGoogleAuthenticationStore } from '@/google/stores/googleAuthenticationStore'
 import { useAuthenticationStore } from '@/auth/stores/authenticationStore'
 
-// ✅ SEO 메타 정보
-definePageMeta({
-  title: '회원 탈퇴 | 잡스틱(JobStick)',
-  description: '잡스틱(JobStick) 계정을 탈퇴하고자 하는 이유를 선택하고, 계정 삭제 절차를 진행할 수 있습니다.',
-  keywords: ['회원 탈퇴', '계정 삭제', 'JobStick', '서비스 해지', '탈퇴', '개발자 플랫폼', '개발자 취업', '모의 면접', 'AI 면접'],
-  ogTitle: '잡스틱(JobStick) 회원 탈퇴',
-  ogDescription: '계정을 삭제하고 잡스틱(JobStick) 서비스를 탈퇴하는 절차를 안내합니다.',
-  ogImage: '' // 실제 이미지 경로
-});
+// ✅ SEO 메타 정보 5
+useHead({
+  title: "회원 탈퇴 | 잡스틱(JobStick)",
+  meta: [
+    { name: "description", content: "잡스틱(JobStick) 계정을 탈퇴하고자 하는 이유를 선택하고, 계정 삭제 절차를 진행할 수 있습니다." },
+    { name: "keywords", content: "회원 탈퇴, 계정 삭제, JobStick, 서비스 해지, 탈퇴, 개발자 플랫폼, 개발자 취업, 모의 면접, AI 면접" },
+    { property: "og:title", content: "잡스틱(JobStick) 회원 탈퇴" },
+    { property: "og:description", content: "계정을 삭제하고 잡스틱(JobStick) 서비스를 탈퇴하는 절차를 안내합니다." },
+    { property: "og:image", content: "" }
+  ]
+})
 
 const step = ref('reason')
 const selectedReason = ref(null)
